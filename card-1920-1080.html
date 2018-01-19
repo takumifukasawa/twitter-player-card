@@ -4,21 +4,54 @@
     <meta charset="utf-8">
     <title>player</title>
     <style type="text/css">
-      html, body {
-        border: 0;
-        margin: 0;
-        padding: 0;
+      .wrapper {
+        position: relative;
       }
       video {
         width: 100%;
+        height: auto;
+        position: relative;
+      }
+      #play, #stop {
+        width: 100px;
+        height: 30px;
+        background-color: white;
+        font-weight: bold;
+        text-align:  center;
+        font-size: 11px;
+        line-height: 30px;
+        letter-spacing: 0.03em;
+        position: absolute;
+        cursor: pointer;
+      }
+      #play {
+        top: 10px;
+        left: 10px;
+      }
+      #stop {
+        top: 10px;
+        left: 120px;
       }
     </style>
 	</head>
   <body>
-    <video id="movie" src="./movie-1920-1080.mp4" autoplay />
+    <div class="wrapper">
+      <video id="movie" src="./movie-1920-1080.mp4" autoplay loop></video>
+      <div id="play">PLAY</div>
+      <div id="stop">STOP</div>
+    </div>
     <script>
-      //var movie = document.getElementById("movie");
-      //movie.volume = 0;
+      var movie = document.getElementById("movie");
+      var play = document.getElementById("play");
+      var stop = document.getElementById("stop");
+
+      play.addEventListener("click", function() {
+        movie.play();
+      })
+
+      stop.addEventListener("click", function() {
+        movie.pause();
+      });
     </script>
   </body>
 </html>
